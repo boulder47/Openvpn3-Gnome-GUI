@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.openvpn3.Gui</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>OpenVPN3 GUI</name>
+  <summary>A native GNOME frontend for OpenVPN 3</summary>
+  <description>
+    <p>
+      OpenVPN3 GUI is a complete graphical frontend for the openvpn3-linux
+      client. It covers profile management (import, export, ACLs, tags),
+      connection management with interactive authentication (passwords,
+      OTP, PKCS#11), live logs, session inspection, network diagnostics,
+      desktop notifications, tray integration, and automation — without
+      ever needing the terminal.
+    </p>
+  </description>
+  <launchable type="desktop-id">org.openvpn3.Gui.desktop</launchable>
+  <url type="homepage">https://github.com/example/openvpn3-gui</url>
+  <url type="bugtracker">https://github.com/example/openvpn3-gui/issues</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.1.0" date="2026-07-13"/>
+  </releases>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+</component>

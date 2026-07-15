@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+  <vendor>OpenVPN3 GUI</vendor>
+  <vendor_url>https://github.com/example/openvpn3-gui</vendor_url>
+
+  <!--
+    NOTE: The GUI never invokes pkexec/sudo itself. All privileged tunnel
+    operations are performed by the openvpn3-linux D-Bus services, which
+    enforce their own PolicyKit actions (net.openvpn.v3.*). This action is
+    only used for the optional "install system-wide autostart unit" helper.
+  -->
+  <action id="org.openvpn3.gui.install-boot-unit">
+    <description>Install the OpenVPN3 auto-connect boot unit</description>
+    <message>Authentication is required to install the VPN auto-connect service</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+</policyconfig>

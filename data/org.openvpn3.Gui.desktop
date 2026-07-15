@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=OpenVPN3 GUI
+GenericName=VPN Manager
+Comment=Manage OpenVPN 3 connections, profiles, and sessions
+Exec=openvpn3-gui %U
+Icon=org.openvpn3.Gui
+Terminal=false
+Type=Application
+Categories=Network;Settings;GTK;GNOME;
+Keywords=vpn;openvpn;network;security;tunnel;
+StartupNotify=true
+X-GNOME-UsesNotifications=true
+MimeType=application/x-openvpn-profile;

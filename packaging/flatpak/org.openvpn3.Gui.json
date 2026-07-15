@@ -1,0 +1,50 @@
+{
+  "app-id": "org.openvpn3.Gui",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "46",
+  "sdk": "org.gnome.Sdk",
+  "command": "openvpn3-gui",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=wayland",
+    "--socket=fallback-x11",
+    "--share=network",
+    "--device=dri",
+    "--talk-name=org.freedesktop.secrets",
+    "--talk-name=org.kde.StatusNotifierWatcher",
+    "--system-talk-name=net.openvpn.v3.sessions",
+    "--system-talk-name=net.openvpn.v3.configuration",
+    "--system-talk-name=net.openvpn.v3.log",
+    "--system-talk-name=org.freedesktop.NetworkManager",
+    "--system-talk-name=org.freedesktop.login1",
+    "--filesystem=home:ro"
+  ],
+  "modules": [
+    {
+      "name": "python-cryptography",
+      "buildsystem": "simple",
+      "build-commands": [
+        "pip3 install --prefix=/app --no-deps cryptography --no-build-isolation || pip3 install --prefix=/app cryptography"
+      ],
+      "sources": []
+    },
+    {
+      "name": "openvpn3-gui",
+      "buildsystem": "simple",
+      "build-commands": [
+        "pip3 install --prefix=/app --no-deps .",
+        "install -Dm644 data/org.openvpn3.Gui.desktop /app/share/applications/org.openvpn3.Gui.desktop",
+        "install -Dm644 data/org.openvpn3.Gui.metainfo.xml /app/share/metainfo/org.openvpn3.Gui.metainfo.xml",
+        "install -Dm644 data/org.openvpn3.Gui.gschema.xml /app/share/glib-2.0/schemas/org.openvpn3.Gui.gschema.xml",
+        "install -Dm644 data/icons/hicolor/scalable/apps/org.openvpn3.Gui.svg /app/share/icons/hicolor/scalable/apps/org.openvpn3.Gui.svg",
+        "glib-compile-schemas /app/share/glib-2.0/schemas"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "../.."
+        }
+      ]
+    }
+  ]
+}

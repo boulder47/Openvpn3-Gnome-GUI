@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.openvpn3.Gui" path="/org/openvpn3/Gui/">
+    <key name="theme" type="s">
+      <default>'system'</default>
+      <summary>Color scheme preference</summary>
+      <description>One of 'system', 'light', 'dark'.</description>
+    </key>
+    <key name="minimize-to-tray" type="b">
+      <default>true</default>
+      <summary>Keep running in the tray when the window is closed</summary>
+    </key>
+    <key name="start-minimized" type="b">
+      <default>false</default>
+      <summary>Start hidden in the tray</summary>
+    </key>
+    <key name="check-for-updates" type="b">
+      <default>true</default>
+      <summary>Check for new releases on startup</summary>
+    </key>
+    <key name="cli-path" type="s">
+      <default>''</default>
+      <summary>Custom path to the openvpn3 executable</summary>
+    </key>
+    <key name="debug-mode" type="b">
+      <default>false</default>
+      <summary>Verbose logging</summary>
+    </key>
+  </schema>
+</schemalist>

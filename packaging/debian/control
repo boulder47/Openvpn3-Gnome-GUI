@@ -1,0 +1,33 @@
+Source: openvpn3-gui
+Section: net
+Priority: optional
+Maintainer: OpenVPN3 GUI Contributors <maintainers@example.org>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3-all,
+               python3-setuptools,
+               python3-pytest,
+               python3-pytest-asyncio,
+               pybuild-plugin-pyproject
+X-Python3-Version: >= 3.12
+Standards-Version: 4.6.2
+Homepage: https://github.com/example/openvpn3-gui
+Rules-Requires-Root: no
+
+Package: openvpn3-gui
+Architecture: all
+Depends: ${python3:Depends},
+         ${misc:Depends},
+         python3-gi (>= 3.46),
+         gir1.2-gtk-4.0,
+         gir1.2-adw-1,
+         gir1.2-secret-1,
+         python3-cryptography,
+         openvpn3
+Recommends: gir1.2-ayatanaappindicator3-0.1,
+            gnome-shell-extension-appindicator
+Description: Native GNOME frontend for OpenVPN 3
+ A complete GTK4/Libadwaita graphical interface for the openvpn3-linux
+ client: profile management, connections with interactive authentication,
+ live logs, session inspection, network diagnostics, notifications, tray
+ integration, and automation.

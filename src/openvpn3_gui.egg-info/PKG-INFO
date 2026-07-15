@@ -1,0 +1,136 @@
+Metadata-Version: 2.1
+Name: openvpn3-gui
+Version: 0.1.0
+Summary: A native GTK4/Libadwaita GNOME frontend for openvpn3-linux
+Author: OpenVPN3 GUI Contributors
+License: GPL-3.0-or-later
+Keywords: openvpn,vpn,gnome,gtk4,libadwaita
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: X11 Applications :: GTK
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: System :: Networking
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+
+# OpenVPN3 GUI
+
+A production-quality, native GNOME (GTK4 + Libadwaita) graphical frontend for
+[openvpn3-linux](https://github.com/OpenVPN/openvpn3-linux). Every capability
+of the `openvpn3` CLI — configurations, sessions, logs, ACLs, authentication,
+statistics — exposed through a polished, HIG-compliant desktop application.
+No terminal required.
+
+![Ubuntu 24.04+](https://img.shields.io/badge/Ubuntu-24.04%2B-orange)
+![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue)
+![GTK4 + Libadwaita](https://img.shields.io/badge/GTK-4%20%2B%20Libadwaita-green)
+![License GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-lightgrey)
+
+## Features
+
+**Dashboard** — connection status, connected profile/server, public & VPN IP,
+session duration, upload/download totals, a live Cairo-drawn bandwidth graph,
+DNS servers, gateway, protocol, latency, and tunnel interface state, plus a
+continuously updated system-health panel (openvpn3 service, D-Bus, internet,
+tunnel).
+
+**Profile Manager** — import/export `.ovpn` files (or fetch from a URL),
+unlimited profiles, rename/duplicate/delete with confirmation, live
+search/filter, four sort modes, favorites, tags, notes, last-used tracking,
+embedded certificate inspection with expiry warnings, and full
+`config-acl` management (public access, per-user grants, lock-down).
+
+**Connection Manager** — connect/disconnect/reconnect/pause/resume, per-session
+auto-restart toggle, multiple simultaneous sessions, a live connection
+transcript, and an in-app connection history.
+
+**Authentication** — interactive username/password, certificate,
+PKCS#11 PIN, and MFA/OTP challenges are detected on the `session-start`
+stream and answered through native dialogs. Credentials can optionally be
+saved in the **GNOME Keyring (Secret Service)** — never on disk, never in
+plaintext.
+
+**Live Logs** — real-time tail of the openvpn3 log service and the app's own
+structured logs, severity coloring, plain-text and **regex** filtering,
+debug-verbosity toggle, copy to clipboard, and export to file.
+
+**Session View** — every active session with PID, status, owner, interface,
+routes, DNS, restart count, and per-session disconnect/restart controls.
+
+**Network** — tunnel interface, MTU, IPv4/IPv6 addresses, pushed routes,
+traffic statistics, plus built-in **public IP checker**, **latency test**,
+and **DNS leak test**.
+
+**Notifications** — native GNOME notifications for connect, disconnect,
+errors, authentication requests, reconnects, and certificate expiry — each
+individually toggleable.
+
+**Tray** — StatusNotifierItem/AppIndicator icon with live status, quick
+connect for favorite profiles, disconnect-all, and hide-to-tray on close.
+
+**Automation** — connect on login (XDG autostart), connect on boot
+(generated systemd user unit), reconnect when the network comes back
+(NetworkManager D-Bus), reconnect on resume from suspend (logind D-Bus), and
+cron-style scheduled reconnects. Pre/post connect/disconnect **hook scripts**
+with custom environment variables and persisted execution logs.
+
+**Developer Console** — every executed CLI command with stdout/stderr, exit
+code, and duration; manual command execution routed through the same safe
+wrapper (never a shell).
+
+**More** — global search across profiles/sessions/settings/commands
+(Ctrl+F), keyboard shortcuts, dark/light/system theme, localization
+(gettext), settings import/export, full **backup/restore** archives,
+per-profile **traffic history**, and a **plugin system**.
+
+## Screenshot tour
+
+Sidebar navigation: Dashboard · Profiles · Connections · Sessions ·
+Live Logs · Network · Settings · Developer Console.
+
+## Quick start
+
+```bash
+# 1. Install openvpn3-linux (the backend this GUI drives)
+sudo apt install openvpn3
+
+# 2. Install the GUI (Debian package)
+sudo apt install ./openvpn3-gui_0.1.0-1_all.deb
+
+# 3. Launch
+openvpn3-gui
+```
+
+See [docs/INSTALL.md](docs/INSTALL.md) for Flatpak, AppImage, and
+from-source instructions, [docs/USER_GUIDE.md](docs/USER_GUIDE.md) for a
+feature walkthrough, and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) +
+[docs/DEVELOPER.md](docs/DEVELOPER.md) if you want to hack on it.
+
+## Security posture
+
+- The GUI **never runs as root and never invokes sudo**. All privileged
+  tunnel operations are delegated to the openvpn3-linux D-Bus system
+  services, which enforce their own **PolicyKit** actions
+  (`net.openvpn.v3.*`).
+- Secrets live exclusively in the **GNOME Keyring** via the Secret Service
+  API. Backups deliberately exclude credentials.
+- Subprocesses are spawned with argument vectors (`exec`, never a shell) —
+  there is no shell-injection surface.
+- Destructive actions (remove profile, disconnect, revoke access) always
+  require an explicit confirmation dialog.
+
+## Keyboard shortcuts
+
+| Shortcut | Action |
+|---|---|
+| `Ctrl+F` | Global search |
+| `Ctrl+1…5` | Dashboard / Profiles / Connections / Sessions / Logs |
+| `Ctrl+,` | Settings |
+| `Ctrl+Shift+D` | Developer Console |
+| `Ctrl+Q` | Quit |
+
+## License
+
+GPL-3.0-or-later.

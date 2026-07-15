@@ -1,0 +1,8 @@
+/* Application-wide CSS loaded on top of Libadwaita defaults. */
+
+.status-badge {
+  border-radius: 999px;
+  padding: 2px 10px;
+  background: alpha(currentColor, 0.12);
+  font-weight: 600;
+}

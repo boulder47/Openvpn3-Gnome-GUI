@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+export PYBUILD_NAME=openvpn3-gui
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_test:
+	PYTHONPATH=$(CURDIR)/src python3 -m pytest src/openvpn3_gui/tests -q
+
+override_dh_auto_install:
+	dh_auto_install
+	install -Dm644 data/org.openvpn3.Gui.desktop \
+		debian/openvpn3-gui/usr/share/applications/org.openvpn3.Gui.desktop
+	install -Dm644 data/org.openvpn3.Gui.metainfo.xml \
+		debian/openvpn3-gui/usr/share/metainfo/org.openvpn3.Gui.metainfo.xml
+	install -Dm644 data/org.openvpn3.Gui.gschema.xml \
+		debian/openvpn3-gui/usr/share/glib-2.0/schemas/org.openvpn3.Gui.gschema.xml
+	install -Dm644 data/org.openvpn3.Gui.policy \
+		debian/openvpn3-gui/usr/share/polkit-1/actions/org.openvpn3.Gui.policy
+	install -Dm644 data/icons/hicolor/scalable/apps/org.openvpn3.Gui.svg \
+		debian/openvpn3-gui/usr/share/icons/hicolor/scalable/apps/org.openvpn3.Gui.svg
