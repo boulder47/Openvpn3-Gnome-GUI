@@ -1,3 +1,5 @@
+I wrote this for myself because I was tired of using the terminal for VPN start and stop.
+
 # OpenVPN3 GUI
 
 A native GNOME (GTK4 + Libadwaita) graphical frontend for
