@@ -14,6 +14,9 @@ terminal required for day-to-day use.
 ![GTK4 + Libadwaita](https://img.shields.io/badge/GTK-4%20%2B%20Libadwaita-green)
 ![License GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-lightgrey)
 
+<img width="2604" height="1764" alt="screenshot" src="https://github.com/user-attachments/assets/000aad5e-65e9-4276-a399-e1638b18432a" />
+
+
 ---
 
 ## Table of contents
